@@ -2,7 +2,7 @@ resource "tencentcloud_kubernetes_cluster" "tke-cluster" {
   availability_zone   = var.app_target.subnet.zone
   vpc_id              = var.app_target.vpc.id
   subnet_ids          = [var.app_target.subnet.id]
-  cluster_cidr        = "172.16.0.0/16"
+  cluster_cidr        = var.cluster_cidr
   cluster_os          = "tlinux3.1x86_64"
   cluster_os_type     = "GENERAL"
   cluster_ipvs        = true
@@ -19,7 +19,7 @@ resource "tencentcloud_kubernetes_cluster" "tke-cluster" {
     password                   = random_password.cvm.result
     availability_zone          = var.app_target.subnet.zone
     subnet_id                  = var.app_target.subnet.id
-    image_id                   = var.app_cvm_image.image_id
+    img_id                   = var.app_cvm_image.image_id
     instance_type              = var.app_cvm.instance_type
     public_ip_assigned         = false
     internet_max_bandwidth_out = 0

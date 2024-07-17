@@ -33,6 +33,12 @@ variable "app_target" {
   })
 }
 
+
+# 容器网络
+variable "cluster_cidr" {
+  default = "172.16.0.0/16"
+}
+
 variable "app_sg" {
   type = object({
     region    = string
