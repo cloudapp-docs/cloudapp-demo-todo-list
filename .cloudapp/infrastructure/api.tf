@@ -4,7 +4,7 @@
 resource "cloudapp_tke_service" "backend" {
   resource_manager = "helm"
   chart_config = {
-    cluster_id   = tencentcloud_eks_cluster.eks.id
+    cluster_id   = tencentcloud_kubernetes_cluster.tke-cluster.id
     chart_id     = cloudapp_helm_app.app.id
     service_name = "${var.app_name}-api-service"
   }

@@ -57,3 +57,22 @@ variable "charge_perpaid_period" {
   type            = number
   default = 1
 }
+
+variable "app_cvm" {
+  type = object({
+    instance_type = string
+  })
+  default = {
+    instance_type = "S6.MEDIUM4"
+  }
+}
+
+variable "app_cvm_image" {
+  type = object({
+    image_id = string
+  })
+
+  default = {
+    image_id = "img-mmytdhbn"
+  }
+}

@@ -7,6 +7,8 @@ metadata:
     {{- include "cloudapp.labels" . | nindent 4 }}
   annotations:
     service.kubernetes.io/qcloud-loadbalancer-internal-subnetid: {{ .Values.cloudappTargetSubnetID }}
+    service.cloud.tencent.com/security-groups: "sg-nlka01dx"
+    service.cloud.tencent.com/pass-to-target: "true"
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Cluster

@@ -1,18 +1,25 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { setup, setupSequelize, defineModels } = require('./sequelize');
+const logger = require('./logger')
 
 async function main() {
+  logger.info('main start');
+
   const sequelize = setupSequelize();
   const { Todo } = defineModels(sequelize);
+
+  logger.info('mysql setup complete')
 
   const app = express();
   app.use(bodyParser.json());
 
   app.use('/api/GetTodoList', async (req, res) => {
+    logger.info('/api/GetTodoList')
     const todoList = await Todo.findAll({
       order: [['id', 'DESC']],
     });
+    logger.info('/api/GetTodoList response', JSON.stringify(todoList))
     res.send({ todoList });
   });
 
@@ -20,7 +27,7 @@ async function main() {
     const {
       APIPayload: { content },
     } = req.body;
-    console.log('AddTodo', req.body, content);
+    logger.info('AddTodo', req.body, content);
     const todo = await Todo.create({ content });
     res.send({ id: todo.id });
   });
@@ -33,7 +40,9 @@ async function main() {
     res.send({ id });
   });
 
-  app.listen(8000);
+  app.listen(8000, () => {
+    logger.info('listening on 8000')
+  });
 }
 
 if (process.env.SETUP) {

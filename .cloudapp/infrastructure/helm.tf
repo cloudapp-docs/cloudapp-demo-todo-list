@@ -1,7 +1,7 @@
 # 声明一个 Helm 容器编排，指定编排到的容器集群在 eks.tf 中声明了
 
 resource "cloudapp_helm_app" "app" {
-  cluster_id     = tencentcloud_eks_cluster.eks.id
+  cluster_id     = tencentcloud_kubernetes_cluster.tke-cluster.id
   chart_src      = "../software/chart"
   chart_username = var.cloudapp_repo_username
   chart_password = var.cloudapp_repo_password

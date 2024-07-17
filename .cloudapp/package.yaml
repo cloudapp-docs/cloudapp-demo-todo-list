@@ -22,6 +22,21 @@ args:
     regions:
       - ${app_zone.region}
 
+  - name: app_cvm
+    label: 容器节点 cvm 机型
+    widget: cvm-instance-type-select
+    region: ${app_target.region}
+    zone: ${app_target.subnet.zone}
+    chargeType: '${charge_type == "PREPAID" ? "PREPAID" : "POSTPAID_BY_HOUR"}'
+    incompleteTips: 请先选择安装目标地域
+
+  - name: app_cvm_image
+    label: 容器节点 cvm 镜像
+    widget: image-select
+    region: ${app_target.region}
+    instanceType: ${app_cvm.instance_type}
+    incompleteTips: 请先选择安装目标地域
+
   - name: charge_type
     label: 计费类型
     description: 云资源购买使用付费方式
