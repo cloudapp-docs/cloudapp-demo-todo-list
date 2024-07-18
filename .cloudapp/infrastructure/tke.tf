@@ -3,7 +3,7 @@ resource "tencentcloud_kubernetes_cluster" "tke-cluster" {
   vpc_id              = var.app_target.vpc.id
   subnet_ids          = [var.app_target.subnet.id]
   cluster_cidr        = var.cluster_cidr
-  cluster_os          = "tlinux3.1x86_64"
+  cluster_os          = "ubuntu18.04.1x86_64"
   cluster_os_type     = "GENERAL"
   cluster_ipvs        = true
   cluster_deploy_type = "MANAGED_CLUSTER"
