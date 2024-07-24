@@ -37,13 +37,13 @@ args:
     incompleteTips: 请先选择安装目标地域
     description: 选择 AMD 机型
 
-  - name: app_cvm_image
-    label: 容器节点 cvm 镜像
-    widget: image-select
-    region: ${app_target.region}
-    instanceType: ${app_cvm.instance_type}
-    platforms: ["Ubuntu"]
-    incompleteTips: 请先选择安装目标地域
+  # - name: app_cvm_image
+  #   label: 容器节点 cvm 镜像
+  #   widget: image-select
+  #   region: ${app_target.region}
+  #   instanceType: ${app_cvm.instance_type}
+  #   platforms: ["TencentOS"]
+  #   incompleteTips: 请先选择安装目标地域
 
   - name: charge_type
     label: 计费类型

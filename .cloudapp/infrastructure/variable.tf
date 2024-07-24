@@ -79,6 +79,6 @@ variable "app_cvm_image" {
   })
 
   default = {
-    image_id = "img-mmytdhbn"
+    image_id = "img-9axl1k53"
   }
 }
