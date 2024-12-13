@@ -36,6 +36,12 @@ resource "tencentcloud_kubernetes_cluster" "tke-cluster" {
     system_disk_size = 50
   }
 
+  # 随集群删除 CBS，如需保留 CBS，则无需配置 resource_delete_options
+  resource_delete_options {
+    resource_type = "CBS"
+    delete_mode   = "terminate"
+  }
+
   labels = {
     "node" : "coding"
   }
